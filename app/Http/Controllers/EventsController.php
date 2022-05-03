@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Http\Request;
 
 class EventsController extends BaseController
 {
@@ -97,7 +98,10 @@ class EventsController extends BaseController
      */
 
     public function getEventsWithWorkshops() {
-        throw new \Exception('implement in coding task 1');
+        $data = Event::with('workshops')->get();
+        //return response()->json(['status' => 200, 'message' => 'data has been shared', 'data' => $data], 200);
+        return response()->json($data);
+        //throw new \Exception('implement in coding task 1');
     }
 
 
